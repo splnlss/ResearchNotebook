@@ -1,0 +1,71 @@
+name: Validate notebook
+
+on: [push, pull_request]
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lint maintained Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v24
+        with:
+          globs: |
+            AGENTS.md
+            README.md
+            index.md
+            log.md
+            notes/**/*.md
+            raw/index.md
+            ideas/index.md
+            drafts/index.md
+      - name: Check README mirrors root index
+        run: diff -u index.md README.md
+      - name: Check page frontmatter and synopses
+        run: |
+          python -m pip install --disable-pip-version-check PyYAML==6.0.2
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+          import yaml
+
+          errors = []
+          for folder in ("notes", "ideas", "drafts"):
+              for path in Path(folder).rglob("*.md"):
+                  if path.name in ("index.md", "log.md"):
+                      continue
+                  content = path.read_text(encoding="utf-8")
+                  match = re.match(r"\A---\r?\n(.*?)\r?\n---\r?\n", content, re.S)
+                  if not match:
+                      errors.append(f"{path}: missing YAML frontmatter")
+                      continue
+                  try:
+                      data = yaml.safe_load(match.group(1))
+                  except yaml.YAMLError as exc:
+                      errors.append(f"{path}: invalid YAML: {exc}")
+                      continue
+                  if not isinstance(data, dict):
+                      errors.append(f"{path}: frontmatter must be a mapping")
+                      continue
+                  for key in ("type", "title", "description"):
+                      value = data.get(key)
+                      if not isinstance(value, str) or not value.strip():
+                          errors.append(f"{path}: {key} must be nonempty text")
+                  description = data.get("description")
+                  if isinstance(description, str) and "\n" in description:
+                      errors.append(f"{path}: description must be one line")
+                  tags = data.get("tags")
+                  if (not isinstance(tags, list) or not 1 <= len(tags) <= 4
+                          or any(not isinstance(tag, str)
+                                 or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", tag)
+                                 for tag in tags)):
+                      errors.append(f"{path}: use 1-4 lowercase kebab-case tags")
+          if errors:
+              print("\n".join(errors), file=sys.stderr)
+              sys.exit(1)
+          print("Frontmatter and synopses OK")
+          PY
