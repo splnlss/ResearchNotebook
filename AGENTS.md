@@ -19,9 +19,19 @@ Markdown. Start with the finding, then give the evidence and open questions.
 - `log.md`: dated, material changes only; newest date first.
 
 Use subfolders when they help, such as `raw/transcripts/` or
-`notes/plots/`. Name files with short, descriptive `kebab-case` names.
+`notes/plots/`.
 Every new content file must end in `.md`. The GitHub workflow file is the
 only non-Markdown repository file needed for validation.
+
+## File names
+
+- Use a stable, lowercase `kebab-case` topic name for ongoing pages:
+  `notes/solar-battery-options.md`.
+- Prefix `YYYY-MM-DD-` only when the date identifies an event or snapshot:
+  `raw/transcripts/2026-09-29-expert-interview.md` or
+  `notes/2026-09-29-solar-battery-prices.md`.
+- Keep the human-readable title in frontmatter and other search terms in
+  tags. Avoid renaming linked pages just to record a later update.
 
 ## Page format and vocabulary
 
