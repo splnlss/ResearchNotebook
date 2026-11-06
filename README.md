@@ -6,7 +6,8 @@ synopsis in its `description` field.
 
 ## Browse
 
-- [WebXR splat color](notes/gaussian-splat-vr-color.md) - Test the standalone and Air Link color paths before changing splat assets.
+- [WebXR splat color](notes/gaussian-splat-vr-color.md) - Compare standalone
+  and Air Link color before changing the asset.
 - [Notes](notes/index.md) - checked research and synthesized findings.
 - [Ideas](ideas/index.md) - creative exploration and open possibilities.
 - [Drafts](drafts/index.md) - human writing and work in progress.

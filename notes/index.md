@@ -3,8 +3,8 @@
 Concise research, comparisons, recommendations, solutions, plot structures,
 and processed transcripts. Add each new page here with its synopsis.
 
-- [Diagnose blown-out Gaussian splat colors in WebXR](gaussian-splat-vr-color.md) -
-  A controlled comparison to isolate XR color changes before editing assets.
+- [WebXR splat color diagnosis](gaussian-splat-vr-color.md) - Compare XR color
+  paths before changing splat assets.
 - [WebXR Colorado prototype setup and review](webxr-prototype-setup.md) -
   Quest 2 setup, service contracts, validation, and unresolved run details.
 - [Independent WebXR setup review](webxr-prototype-setup-review.md) - Resolved
