@@ -180,6 +180,25 @@ offloads tile and splat drawing, but requires a GPU server and low-latency
 network path; it is a different delivery architecture, not a faster local
 loader. The cited CloudXR documentation predates this four-month search window.
 
+## Reuse checkpoint, 6 November 2026
+
+The September viewer findings remain a pinned baseline. Since then,
+[Spark 2.4.0](https://github.com/sparkjsdev/spark/blob/main/CHANGELOG.md)
+has fixed WebXR LoD pixel selection from the headset projection and corrected
+stereo splat-size calculations; it also changed RAD decoding and worker
+behavior. [3D Tiles Renderer 0.5.4](https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/CHANGELOG.md)
+fixes `UnloadTilesPlugin` memory accounting and unloading after tiles are
+hidden and shown again. Meta lists [Quest Browser 154.1](https://developers.meta.com/vr/release-notes/?search_key=browser)
+as released on 30 October. These releases do not establish a faster combined
+Quest 2 scene. The viewer's Spark 2.2.0 ECEF patch is hash-locked, so compare
+any upgrade against the pinned build with the same assets, camera path,
+georeferencing, and headset telemetry.
+
+The remaining device result is tracked as
+[Quest 2 combined-scene acceptance](https://github.com/splnlss/3d-story-app/issues/168).
+Keep this page in draft until that issue records a corrected headset run and
+the owner selects an acceptable visual and comfort threshold.
+
 ## Practical Quest 2 experiment
 
 1. **Correct the render path before setting budgets.** Use the headset

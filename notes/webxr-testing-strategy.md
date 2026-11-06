@@ -139,6 +139,8 @@ capabilities in the linked tool documentation.
 
 The [independent review](webxr-testing-strategy-review.md) records the
 project-specific corrections included in this recommendation.
+The next combined globe, tile, and RAD headset run is tracked in
+[Quest 2 acceptance issue #168](https://github.com/splnlss/3d-story-app/issues/168).
 
 ## Open questions
 

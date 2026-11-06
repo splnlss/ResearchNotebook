@@ -1,5 +1,11 @@
 # Notebook update log
 
+## 2026-11-06
+
+- **Quest 2 research closeout**: Checked later Spark, 3D Tiles Renderer, and
+  Browser releases; kept the September baseline dated and linked one open
+  combined-scene headset acceptance task.
+
 ## 2026-09-30
 
 - **RAD build and streaming quality**: Captured the supplied handoff verbatim
