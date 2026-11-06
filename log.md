@@ -2,6 +2,8 @@
 
 ## 2026-11-06
 
+- **WebXR splat color**: Recorded the unresolved pink/blown-out VR color issue
+  and a comparison plan for standalone Quest and Air Link.
 - **Quest 2 research closeout**: Checked later Spark, 3D Tiles Renderer, and
   Browser releases; kept the September baseline dated and linked one open
   combined-scene headset acceptance task.
